@@ -76,7 +76,7 @@ async def update_todo(todo_id: str, request: Request, token: dict = Depends(veri
         })
     return {"message": "ToDo updated"}
 
-@app.delete("/todos/{todo_id}")
+@app.delete("/todos")
 def delete_todo(todo_id: str, token: str = Depends(verify_firebase_token)):
     db.collection('todos').document(todo_id).delete()
     return {"message": "ToDo deleted"}
